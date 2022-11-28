@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class FillFormTest {
+
     String firstName = "Alex";
     String lastName = "Alexandrov";
     String userEmail = "alex@yandex.ru";
