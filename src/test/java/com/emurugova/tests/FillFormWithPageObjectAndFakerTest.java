@@ -4,6 +4,8 @@ import com.emurugova.pages.RegistrationPage;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 public class FillFormWithPageObjectAndFakerTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -15,22 +17,39 @@ public class FillFormWithPageObjectAndFakerTest extends TestBase {
 
     @Test
     void fillFormTest() {
-        registrationPage.openPage();
+        step("Open students registration form", () -> {
+                    registrationPage.openPage();
+        });
+        step("Fill the form", () -> {
         registrationPage.typeFirstName(firstName)
                         .typeLastName(lastName)
                         .typeUserEmail(userEmail)
                         .selectGender()
-                        .typeUserNumber(TestData.userNumber)
-                        .setDate(TestData.day, TestData.month, TestData.year)
-                        .selectSubject(TestData.subject)
-                        .selectHobby()
-                        .loadFile(TestData.userDirectory)
-                        .typeCurrentAddress(currentAddress)
+                        .typeUserNumber(TestData.userNumber);
+        });
+        step("Set the birth date", () -> {
+        registrationPage.setDate(TestData.day, TestData.month, TestData.year);
+        });
+        step("Set the subject", () -> {
+        registrationPage.selectSubject(TestData.subject);
+        });
+        step("Set the hobby", () -> {
+        registrationPage.selectHobby();
+        });
+        step("Upload the picture", () -> {
+        registrationPage.loadFile(TestData.userDirectory);
+        });
+        step("Set the address", () -> {
+        registrationPage.typeCurrentAddress(currentAddress)
                         .scrollPage()
                         .selectState(TestData.state)
-                        .selectCity(TestData.city)
-                        .callTheFinalForm();
+                        .selectCity(TestData.city);
+        });
+        step("Submit the form", () -> {
+        registrationPage.callTheFinalForm();
+        });
 
+        step("Check the form", () -> {
         registrationPage.checkFinalFormTitle(TestData.finalFormTitle);
         registrationPage.checkStudentName(firstName,lastName)
                         .checkUserEmail(userEmail)
@@ -41,8 +60,8 @@ public class FillFormWithPageObjectAndFakerTest extends TestBase {
                         .checkUserHobby(TestData.userHobby)
                         .checkLoadedFile(TestData.userFile)
                         .checkCurrentAddress(currentAddress)
-                        .checkStateAndCity(TestData.state, TestData.city)
-                        .closeTheForm();
+                        .checkStateAndCity(TestData.state, TestData.city);
+        });
     }
 }
 

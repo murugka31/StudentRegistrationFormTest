@@ -28,10 +28,10 @@ public class FillFormTest {
 
     @BeforeAll
     static void beforeAll(){
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+        capabilities.setCapability("enableVideo",true);
         Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "2100x1080";
         Configuration.baseUrl = "https://demoqa.com";
@@ -103,7 +103,6 @@ public class FillFormTest {
             $(".table-responsive").shouldHave(text("image.png"));
             $(".table-responsive").shouldHave(text(currentAddress));
             $(".table-responsive").shouldHave(text(state + " " + city));
-            $("#closeLargeModal").click();
         });
     }
 }
