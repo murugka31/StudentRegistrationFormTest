@@ -1,30 +1,14 @@
-package simbirsoft.emurugova;
+package com.emurugova.tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.emurugova.tests.TestData.*;
 
-public class FillFormTest {
-
-    String firstName = "Alex";
-    String lastName = "Alexandrov";
-    String userEmail = "alex@yandex.ru";
-    String userNumber = "8999999999";
-    String subject = "Chemistry";
-    String currentAddress = "some street";
-    String state = "Haryana";
-    String city = "Karnal";
-
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.browserSize = "2100x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+public class FillFormWithCommentsTest extends TestBase {
 
     @Test
     void fillFormTest() {
@@ -35,12 +19,12 @@ public class FillFormTest {
         $("#gender-radio-1").parent().click();
         $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("2005");
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
         $(".react-datepicker__day--015").click();
         $("#subjectsInput").setValue(subject).pressEnter();
         $("#hobbies-checkbox-3").parent().click();
-        $("#uploadPicture").uploadFromClasspath("img/image.png");
+        $("#uploadPicture").uploadFromClasspath(userDirectory);
         $("#currentAddress").setValue(currentAddress );
         $("div").scrollTo();
         $("#state").click();
@@ -49,15 +33,15 @@ public class FillFormTest {
         $("#stateCity-wrapper").$(byText(city)).click();
         $("#lastName").pressEnter();
 
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $("#example-modal-sizes-title-lg").shouldHave(text(finalFormTitle));
         $(".table-responsive").shouldHave(text(firstName +" "+ lastName));
         $(".table-responsive").shouldHave(text(userEmail));
-        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text(userGender));
         $(".table-responsive").shouldHave(text(userNumber));
-        $(".table-responsive").shouldHave(text("15 July,2005"));
+        $(".table-responsive").shouldHave(text("15" + " " + month + "," + year));
         $(".table-responsive").shouldHave(text(subject));
-        $(".table-responsive").shouldHave(text("Music"));
-        $(".table-responsive").shouldHave(text("image.png"));
+        $(".table-responsive").shouldHave(text(userHobby));
+        $(".table-responsive").shouldHave(text(userFile));
         $(".table-responsive").shouldHave(text(currentAddress));
         $(".table-responsive").shouldHave(text(state +" "+ city));
         $("#closeLargeModal").click();
