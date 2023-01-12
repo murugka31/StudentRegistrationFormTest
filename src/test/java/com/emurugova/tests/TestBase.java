@@ -12,14 +12,24 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll(){
+        String browserSize = System.getProperty("browserSize", "2100x1080");
+        String browser = System.getProperty("browser", "chrome");
+        String browserVersion = System.getProperty("browser", "100");
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo",true);
         Configuration.browserCapabilities = capabilities;
-        Configuration.browserSize = "2100x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+
+        Configuration.browserSize = browserSize;
+        Configuration.browser = browser;
+        Configuration.browserVersion = browserVersion;
+
+
+
     }
     @AfterEach
     public void attachMethods() {

@@ -15,7 +15,7 @@ public class TestData {
     public static String userDirectory = "img/image.png";
     public static String userFile = "image.png";
     public static String currentAddress = "some street";
-    public static String state = "Haryana";
-    public static String city = "Karnal";
+    public static String state = "NCR";
+    public static String city = "Delhi";
     public static String finalFormTitle = "Thanks for submitting the form";
 }

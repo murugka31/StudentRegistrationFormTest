@@ -1,5 +1,6 @@
 package com.emurugova.tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,7 +12,8 @@ import static io.qameta.allure.Allure.step;
 
 public class FillFormWithCommentsTest extends TestBase {
 
-    @Test
+   @Test
+   @Tag("properties")
     void fillFormTest() {
         step("Open students registration form", () -> {
             open("/automation-practice-form");
@@ -36,7 +38,7 @@ public class FillFormWithCommentsTest extends TestBase {
             $("#subjectsInput").setValue(subject).pressEnter();
         });
 
-        step("Set the hobby", () -> {
+        step("Set the hobby", () ->  {
             $("#hobbies-checkbox-3").parent().click();
         });
 
