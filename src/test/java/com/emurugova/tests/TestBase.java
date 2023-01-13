@@ -14,7 +14,7 @@ public class TestBase {
     static void beforeAll(){
         String browserSize = System.getProperty("browserSize", "2100x1080");
         String browser = System.getProperty("browser", "chrome");
-        String browserVersion = System.getProperty("browser", "100");
+        String browserVersion = System.getProperty("browserVersion", "100");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
