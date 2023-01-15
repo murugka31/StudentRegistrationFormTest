@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 public class FillFormWithCommentsTest extends TestBase {
 
    @Test
-   @Tag("properties")
+   @Tag("notification")
     void fillFormTest() {
         step("Open students registration form", () -> {
             open("/automation-practice-form");
