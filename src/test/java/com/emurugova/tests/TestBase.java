@@ -35,7 +35,7 @@ public static CredentialsConfig credentials = ConfigFactory.create(CredentialsCo
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = format("https://%s:%s@"+remoteUrl, login, password);
+        Configuration.remote = "https://user1:1234@"+remoteUrl;
 
     }
     @AfterEach
