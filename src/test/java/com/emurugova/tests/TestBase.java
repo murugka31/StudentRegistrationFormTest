@@ -22,9 +22,6 @@ public static CredentialsConfig credentials = ConfigFactory.create(CredentialsCo
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browserVersion", "100");
 
-        String login = credentials.login();
-        String password = credentials.password();
-
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

@@ -1,8 +1,8 @@
 {
   "base": {
-    "project": "some project",
-    "environment": "some env",
-    "comment": "some comment",
+    "project": "StudentRegistrationFormTest",
+    "environment": "test environment",
+    "comment": "telegram message check",
     "reportLink": "",
     "language": "en",
     "messanger": "telegram",
