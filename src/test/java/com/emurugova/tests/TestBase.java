@@ -22,7 +22,6 @@ public static CredentialsConfig credentials = ConfigFactory.create(CredentialsCo
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browserVersion", "100");
 
-//        String remoteUrl = System.getProperty("remoteUrl","selenoid.autotests.cloud/wd/hub/");
         String login = credentials.login();
         String password = credentials.password();
 
@@ -36,7 +35,7 @@ public static CredentialsConfig credentials = ConfigFactory.create(CredentialsCo
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = format("https://%s:%s@selenoid.autotests.cloud/wd/hub/", login, password);
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
     }
     @AfterEach
     public void attachMethods() {
